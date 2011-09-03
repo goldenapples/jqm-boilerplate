@@ -54,7 +54,7 @@
 <body>
 <div data-role="page" class="hfeed">
 	
-	<div data-role="header" data-theme="e">
+	<div data-role="header">
 	
 			<h1 id="sitehead"><?php bloginfo('title'); ?></h1>
 			
@@ -66,13 +66,14 @@
 			
 		<div data-role="collapsible" <?php if (!is_front_page()) echo 'data-collapsed="true" '; ?>>
 			<h3 id="tagline"><span class="subhead"><?php bloginfo('description'); ?></span></h3>
-		
-			<?php wp_nav_menu( array( 
-				'theme_location' => 'jqm_nav',
-				'container' => '<div data-role="navbar">', 
-				'items_wrap' => '<ul id="%1$s" class="main-nav" data-theme="a">%3$s</ul>'
-					) ); ?>
-			
+			<div data-role="navbar">
+				<?php wp_nav_menu( array( 
+					'theme_location' => 'jqm_nav',
+					'container' => '',
+					'depth' => 1,
+					'items_wrap' => '<ul id="%1$s" class="main-nav" data-theme="a">%3$s</ul>'
+						) ); ?>
+			</div>
 		</div>
 	</div><!-- data-role="header" -->
 

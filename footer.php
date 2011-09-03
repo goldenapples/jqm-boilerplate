@@ -12,7 +12,7 @@
 
 </div><!-- data-role="content" -->
 
-<div data-role="footer" data-theme="e">
+<div data-role="footer">
 	<h6>Copyright &copy;<?php echo date('Y'); ?> <?php bloginfo('name'); ?></h6>
 </div><!-- data-role="footer" -->
 
