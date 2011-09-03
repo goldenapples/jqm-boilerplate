@@ -58,23 +58,21 @@
 	
 			<h1 id="sitehead"><?php bloginfo('title'); ?></h1>
 			
-			<a href="<?php bloginfo('home'); ?>" data-icon="home" data-iconpos="notext" data-direction="reverse" class="ui-btn-right jqm-home">Home</a>
+			<a href="<?php bloginfo('home'); ?>" data-icon="home" data-iconpos="notext" data-direction="reverse" class="ui-btn-left jqm-home">Home</a>
 			
 			<?php global $posts; if ( $posts[0]->post_parent > 0 ) { ?>
-				<a href="<?php echo get_permalink( $posts[0]->post_parent ); ?>" data-icon="back" data-iconpos="notext" data-direction="reverse" class="ui-btn-left jqm-back">Back</a>
+				<a href="<?php echo get_permalink( $posts[0]->post_parent ); ?>" data-icon="back" data-iconpos="notext" data-direction="reverse" class="ui-btn-right jqm-back">Back</a>
 			<?php } ?>
 			
-		<div data-role="collapsible" <?php if (!is_front_page()) echo 'data-collapsed="true" '; ?>>
-			<h3 id="tagline"><span class="subhead"><?php bloginfo('description'); ?></span></h3>
-			<div data-role="navbar">
-				<?php wp_nav_menu( array( 
-					'theme_location' => 'jqm_nav',
-					'container' => '',
-					'depth' => 1,
-					'items_wrap' => '<ul id="%1$s" class="main-nav" data-theme="a">%3$s</ul>'
-						) ); ?>
-			</div>
+		<div data-role="navbar">
+			<?php wp_nav_menu( array( 
+				'theme_location' => 'jqm_nav',
+				'container' => '',
+				'depth' => 1,
+				'items_wrap' => '<ul id="%1$s" class="main-nav" data-theme="a">%3$s</ul>'
+					) ); ?>
 		</div>
+
 	</div><!-- data-role="header" -->
 
 	<div data-role="content">
