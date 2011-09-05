@@ -1,16 +1,5 @@
 <!DOCTYPE html>
-<!--[if IE 6]>
-<html id="ie6" <?php language_attributes(); ?>>
-<![endif]-->
-<!--[if IE 7]>
-<html id="ie7" <?php language_attributes(); ?>>
-<![endif]-->
-<!--[if IE 8]>
-<html id="ie8" <?php language_attributes(); ?>>
-<![endif]-->
-<!--[if !(IE 6) | !(IE 7) | !(IE 8)  ]><!-->
 <html <?php language_attributes(); ?>>
-<!--<![endif]-->
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
 <meta name="viewport" content="width=device-width" />
@@ -36,21 +25,16 @@
 
 	?></title>
 
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0b1/jquery.mobile-1.0b1.min.css" />
-<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
-<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
-
 <?php
-	/* Always have wp_head() just before the closing </head>
-	 * tag of your theme, or you will break many plugins, which
-	 * generally use this hook to add elements to <head> such
-	 * as styles, scripts, and meta tags.
+	/* Call wp_head() before adding the theme stylesheet in order to allow styles defined 
+	 * in the theme stylesheet to override jQuery Mobile's defaults.
 	 */
 	wp_head();
 ?>
-
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0b1/jquery.mobile-1.0b1.min.css" />
+<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
+<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 </head>
-
 <body>
 <div data-role="page" class="hfeed">
 	
@@ -59,10 +43,6 @@
 			<h1 id="sitehead"><?php bloginfo('title'); ?></h1>
 			
 			<a href="<?php bloginfo('home'); ?>" data-icon="home" data-iconpos="notext" data-direction="reverse" class="ui-btn-left jqm-home">Home</a>
-			
-			<?php global $posts; if ( $posts[0]->post_parent > 0 ) { ?>
-				<a href="<?php echo get_permalink( $posts[0]->post_parent ); ?>" data-icon="back" data-iconpos="notext" data-direction="reverse" class="ui-btn-right jqm-back">Back</a>
-			<?php } ?>
 			
 		<div data-role="navbar">
 			<?php wp_nav_menu( array( 
@@ -76,7 +56,3 @@
 	</div><!-- data-role="header" -->
 
 	<div data-role="content">
-	
-		<?php if (is_page_template('page-directions.php')) { ?>
-			<div id="map-canvas" style="height: 100%; width: 100%; position: absolute;"></div>
-		<?php } ?>

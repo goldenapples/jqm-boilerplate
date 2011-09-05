@@ -1,3 +1,25 @@
 /*
 Theme Name: jQuery Mobile Boilerplate
 */
+
+/* Image styles */
+
+.alignnone {
+	clear: both;
+	margin: .5em;
+	}
+
+.aligncenter {
+	clear: both;
+	margin: .5em auto;
+	}
+	
+.alignright {
+	float: right;
+	margin: .5em;
+	}
+	
+.alignleft {
+	float: left;
+	margin: .5em;
+	}
