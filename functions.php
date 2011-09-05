@@ -24,14 +24,26 @@ function jqm_enqueues() {
 		array( 'jquery', 'jquery-mobile' ) );
 	wp_localize_script( 'mobile-scripts', 'siteData', array( 'siteUrl', home_url() ) );
 	wp_enqueue_style( 'jquery-mobile', "http://code.jquery.com/mobile/latest/jquery.mobile.min.css" );
+	
 }
 
+require( 'functions.class-filters.php' );
 
-/*
-add_filter( 'post_thumbnail_html', 'remove_thumbnail_dimensions', 10, 3 );
-
-function remove_thumbnail_dimensions( $html, $post_id, $post_image_id ) {
-    $html = preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );
-    return $html;
+function jqm_comment( $comment, $args, $depth ) {
+	$GLOBALS['comment'] = $comment; ?>
+	<li <?php comment_class(); ?> id="li-comment-<?php comment_ID() ?>">
+		<a>
+			<?php echo get_avatar($comment,$size='80',$default='<path_to_url>' ); ?>
+			<h3 class="ul-li-heading"><?php echo $comment->comment_author; ?></h3>
+			<?php comment_text(); ?>
+			<p class="ul-li-aside"><?php echo $comment->comment_date; ?></p>
+		</a>
+		<a href="/reply.html" class="ui-li-link-alt ui-btn" data-rel="dialog" title="Reply to this comment" ></a>
+		<?php //comment_reply_link( );
 }
-*/
+
+//add_filter( 'get_avatar', 'jqm_thumb_data_role' );
+
+function jqm_thumb_data_role( $avatar ) {
+	return str_replace( 'class="avatar', 'class="ui-li-thumb avatar', $avatar );
+}
